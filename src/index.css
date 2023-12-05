@@ -1,68 +1,88 @@
-:root {
-  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
-  line-height: 1.5;
-  font-weight: 400;
 
-  color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
 
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+body{
+  background-color: rgb(230, 230, 230);
 }
 
-a {
+.header{
+  background-color: black;
+  width: 100%;
+  padding: 10px;
+  box-shadow: 5px 10px 8px -6px #4285F4;
+
+}
+
+.header-text{
+  font-size: 100px;
+  text-align: center;
   font-weight: 500;
-  color: #646cff;
-  text-decoration: inherit;
-}
-a:hover {
-  color: #535bf2;
+  text-transform: uppercase;
+  font-family: dhurjati;
+  color: #4285F4;
+  text-shadow: 2px 1px rgb(6, 49, 56);
 }
 
-body {
-  margin: 0;
+.instructions{
+  color: gray;
+}
+.error-message{
+  color: red;
+  font-weight: 700;
+  text-align: center;
+  margin-top: 20px;
+}
+
+.form-container{
+  width: 50%;
+  margin: 60px auto;
+}
+
+
+.google-search-form {
+  text-align: center;
+}
+
+.google-search-container {
   display: flex;
-  place-items: center;
-  min-width: 320px;
-  min-height: 100vh;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 20px;
 }
 
-h1 {
-  font-size: 3.2em;
-  line-height: 1.1;
+.results-text{
+  margin-top: 25px;
+  margin-bottom: 25px;
+  font-size: 20px;
 }
 
-button {
-  border-radius: 8px;
-  border: 1px solid transparent;
-  padding: 0.6em 1.2em;
-  font-size: 1em;
-  font-weight: 500;
-  font-family: inherit;
-  background-color: #1a1a1a;
-  cursor: pointer;
-  transition: border-color 0.25s;
-}
-button:hover {
-  border-color: #646cff;
-}
-button:focus,
-button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
+
+.search-group {
+  display: flex;
+  align-items: center;
 }
 
-@media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #ffffff;
-  }
-  a:hover {
-    color: #747bff;
-  }
-  button {
-    background-color: #f9f9f9;
-  }
+.search-input {
+  border: 1px solid #dfe1e5;
+  border-radius: 24px;
+  padding: 10px;
+  width: 400px;
+  margin-right: 10px;
+}
+
+.search-button {
+  border-radius: 24px;
+  padding: 10px 20px;
+}
+
+footer {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  background-color: black;
+  color: #4285F4;
+  padding: 15px;
+  text-align: center;
+  margin-top: 40px;
+  font-family: dhurjati;
 }
