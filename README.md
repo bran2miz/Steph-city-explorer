@@ -2,7 +2,8 @@
 
 [PR Link](https://github.com/StepheeGee/city-explorer/pull/2)
 
-[Deployed Link]()
+[Deployed Link](https://city-explorer-steph.netlify.app/)
+
 **Author**: Stephanie G. Johnson
 **Version**: 1.0.1
 
