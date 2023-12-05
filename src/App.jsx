@@ -1,59 +1,46 @@
-import { useState } from 'react'
-
+import { useState } from 'react';
+import 'bootstrap/dist/css/bootstrap.min.css'; 
 import axios from 'axios';
-
 import Header from "./components/Header.jsx";
 import CityForm from "./components/CityForm.jsx";
 import Map from './components/Map.jsx';
+import ErrorComponent from './components/Error.jsx'; 
 
 const API_KEY = import.meta.env.VITE_API_KEY;
-console.log(API_KEY);
 
 function App() {
-
   const [city, setCity] = useState('');
   const [latitude, setLatitude] = useState(null);
   const [longitude, setLongitude] = useState(null);
-  const [errorMessage, setErrorMessage] = useState(false);
-  
-  function changeCity(newCity) {
+  const [errorMessage, setErrorMessage] = useState('');
 
-    
-    getLocation(newCity);
-
-    // print a map
-    console.log("Changing to", newCity);
-  }
-
-  // Use API (locationIQ) to get the lat/lon
-  async function getLocation(cityName){
-
-    // 1. Call the API asynchronously
+  async function getLocation(cityName) {
     let url = `https://us1.locationiq.com/v1/search?key=${API_KEY}&q=${cityName}&format=json`;
     try {
       let response = await axios.get(url);
-      // 2. Put the city into state
       setCity(response.data[0].display_name);
-      console.log(response.data);
-
-      // 3. Put the lat/lon into state
       setLatitude(response.data[0].lat);
       setLongitude(response.data[0].lon);
-
+      setErrorMessage(''); 
     } catch(error) {
       console.error(error.message);
-      setErrorMessage(true);
+      setErrorMessage(`We're having trouble finding that location. Please try again.`); 
     }
+  }
 
+  function changeCity(newCity) {
+    getLocation(newCity);
+    console.log("Changing to", newCity);
   }
 
   return (
     <>
       <Header />
+      {errorMessage && <ErrorComponent message={errorMessage} />} 
       <CityForm city={city} handleChangeCity={changeCity} />
       <Map latitude={latitude} longitude={longitude} />
     </>
   )
 }
 
-export default App
+export default App;
