@@ -1,5 +1,8 @@
 # City-Explorer Lab
 
+[PR Link](https://github.com/StepheeGee/city-explorer/pull/2)
+
+[Deployed Link]()
 **Author**: Stephanie G. Johnson
 **Version**: 1.0.1
 
@@ -81,9 +84,9 @@ Added more specific error handling and messages for failed API requests.
 
 Thank you Brandon (TA)
 
-# Time Estimates
+## Time Estimates
 
-## Name of feature: 
+### Name of feature: 
 
 1. Set up your React and API
 2. Locations
@@ -97,10 +100,21 @@ Estimate of time needed to complete: _____
 4. 60 min
 
 Start time: _____
-1.
-2.
-3.
-4.
+1. 4:00pm
+
+2-4. 5:00pm
+
 Finish time: _____
+1. 4:45pm
+
+2-4. 11:30pm
 
 Actual time needed to complete: _____
+1. 40 min
+
+2-4. 6hrs 30min
+
+## Lighthouse
+ 
+Monday - 
+![Lighthouse](lighthouse1.png)
