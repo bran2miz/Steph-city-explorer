@@ -2,7 +2,7 @@
 
 [PR Link](https://github.com/StepheeGee/city-explorer/pull/2)
 
-[Deployed Link](https://city-explorer-steph.netlify.app/)
+[Deployed Link](https://endearing-lollipop-2dc400.netlify.app/)
 
 **Author**: Stephanie G. Johnson
 **Version**: 1.0.1
