@@ -17,8 +17,8 @@ function CityForm(props) {
       <Form.Group>
         <Form.Label>Enter a city to begin</Form.Label>
         <Form.Control
-          placeholder="Atlanta, GA"
-          size="lg"
+          placeholder="Oh...the places you can go!"
+          size="md"
           type="text"
           ref={textInput}
         />
