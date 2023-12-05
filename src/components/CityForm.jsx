@@ -11,23 +11,24 @@ function CityForm(props) {
     setShowHeading(true);
     props.handleChangeCity(textInput.current.value);
   };
-
   return (
-    <Form onSubmit={handleSubmit}>
-      <Form.Group>
-        <Form.Label>Enter a city to begin</Form.Label>
-        <Form.Control
-          placeholder="Oh...the places you can go!"
-          size="md"
-          type="text"
-          ref={textInput}
-        />
-      </Form.Group>
-      <Button variant="primary" type="submit">
-        Explore!
-      </Button>
-      {showHeading && props.city && (
-        <h2>Check Below for info about {props.city}</h2>
+    <Form onSubmit={handleSubmit} className="google-search-form">
+      <div className="google-search-container">
+        <Form.Group className="search-group">
+          <Form.Control
+            placeholder="Oh...the places you'll go."
+            size="lg"
+            type="text"
+            ref={textInput}
+            className="search-input"
+          />
+          <Button variant="primary" type="submit" className="search-button">
+            Explore
+          </Button>
+        </Form.Group>
+      </div>
+      {showHeading && props.city &&  (
+        <h2>Welcome to {props.city}. <br/> Explore Below!</h2>
       )}
     </Form>
   );
