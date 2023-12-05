@@ -13,8 +13,10 @@ function CityForm(props) {
   };
   return (
     <Form onSubmit={handleSubmit} className="google-search-form">
+      <p className="instructions">Enter a city below.</p>
       <div className="google-search-container">
         <Form.Group className="search-group">
+          
           <Form.Control
             placeholder="Oh...the places you'll go."
             size="lg"
@@ -28,7 +30,7 @@ function CityForm(props) {
         </Form.Group>
       </div>
       {showHeading && props.city &&  (
-        <h2>Welcome to {props.city}. <br/> Explore Below!</h2>
+        <h2 className="results-text">Welcome to {props.city}. <br/> Explore Below!</h2>
       )}
     </Form>
   );

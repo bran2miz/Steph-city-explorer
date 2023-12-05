@@ -91,9 +91,16 @@ Thank you Brandon (TA)
 4. Errors
 
 Estimate of time needed to complete: _____
+1. 30 min
+2. 60 min
+3. 60 min
+4. 60 min
 
 Start time: _____
-
+1.
+2.
+3.
+4.
 Finish time: _____
 
 Actual time needed to complete: _____

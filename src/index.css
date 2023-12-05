@@ -1,28 +1,40 @@
-:root {
-  margin: 10px;
+
+
+body{
+  background-color: rgb(230, 230, 230);
 }
 
 .header{
   background-color: black;
-  color: white;
-  
   width: 100%;
-  text-align: center;
-  line-height: 100px; 
-  height: 100px; 
-  font-size: 25px;
-  padding: 20px;
+  padding: 10px;
+  box-shadow: 5px 10px 8px -6px #4285F4;
+
 }
 
+.header-text{
+  font-size: 100px;
+  text-align: center;
+  font-weight: 500;
+  text-transform: uppercase;
+  font-family: dhurjati;
+  color: #4285F4;
+  text-shadow: 2px 1px rgb(6, 49, 56);
+}
+
+.instructions{
+  color: gray;
+}
 .error-message{
   color: red;
   font-weight: 700;
   text-align: center;
+  margin-top: 20px;
 }
 
 .form-container{
   width: 50%;
-  margin: 20px auto;
+  margin: 60px auto;
 }
 
 
@@ -37,6 +49,11 @@
   margin-top: 20px;
 }
 
+.results-text{
+  margin-top: 25px;
+  margin-bottom: 25px;
+  font-size: 20px;
+}
 
 
 .search-group {
@@ -63,8 +80,9 @@ footer {
   bottom: 0;
   width: 100%;
   background-color: black;
-  color: white;
-  padding: 20px;
+  color: #4285F4;
+  padding: 15px;
   text-align: center;
-  margin-top: 20px;
+  margin-top: 40px;
+  font-family: dhurjati;
 }
