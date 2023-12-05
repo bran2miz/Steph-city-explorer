@@ -10,7 +10,7 @@ console.log(API_KEY);
   return (
     <When condition={props.latitude && props.longitude}>
       <figure>
-        <img src={`https://maps.locationiq.com/v3/staticmap?key=${API_KEY}&center=${props.latitude},${props.longitude}&size=600x600&format=png`} width="800" />
+        <img src={`https://maps.locationiq.com/v3/staticmap?key=${API_KEY}&center=${props.latitude},${props.longitude}&size=600x600&format=png`} width="800" height="800"/>
       </figure>
    
     </When>
