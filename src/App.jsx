@@ -19,7 +19,7 @@ function App() {
 
   async function fetchWeatherData(lat, lon) {
     try {
-      const response = await axios.get('/weather', {
+      const response = await axios.get('http://localhost:3000/weather', {
         params: {
           lat: lat,
           lon: lon,
@@ -30,8 +30,12 @@ function App() {
       setShowWeather(true);
     } catch (error) {
       console.error('Error fetching weather data:', error);
+      setErrorMessage('Failed to fetch weather data. Please try again.');
+      setShowWeather(false);
+      setForecast(null);
     }
   }
+
 
   async function getLocation(cityName) {
     if (!cityName) {
@@ -52,10 +56,14 @@ function App() {
         console.log('Sending request to backend...');
       } else {
         setErrorMessage(`No location found for '${cityName}'. Please try a different location.`);
+        setShowWeather(false);
+        setForecast(null);
       }
     } catch (error) {
       console.error(error.message);
       setErrorMessage(`We're having trouble finding that location. Please try again.`);
+      setShowWeather(false);
+      setForecast(null);
     }
   }
 

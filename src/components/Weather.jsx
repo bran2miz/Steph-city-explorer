@@ -3,7 +3,7 @@ import React from 'react';
 const Weather = ({ forecast }) => {
   return (
     <div className="weather-container">
-      {forecast && (
+      {forecast && Array.isArray(forecast) && forecast.length > 0 ? (
         <div>
           <h2>Weather Forecast for {forecast[0].city_name}</h2>
           {forecast.map((day, index) => (
@@ -13,6 +13,8 @@ const Weather = ({ forecast }) => {
             </div>
           ))}
         </div>
+      ) : (
+        <p>It's probably gonna rain. Who knows. Global Warming, Amirite?</p>
       )}
     </div>
   );
