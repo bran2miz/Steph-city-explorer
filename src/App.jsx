@@ -1,5 +1,4 @@
-import { useState } from 'react';
-import 'bootstrap/dist/css/bootstrap.min.css';
+import React, { useState } from 'react';
 import axios from 'axios';
 import Header from "./components/Header.jsx";
 import Footer from "./components/Footer.jsx";
@@ -17,15 +16,15 @@ function App() {
   const [errorMessage, setErrorMessage] = useState('');
   const [forecast, setForecast] = useState(null);
 
-  async function fetchWeatherData(lat, lon) {
+  async function fetchWeatherData(lat, lon, date) {
     try {
-      const response = await axios.get('http://localhost:3000/weather', {
+      const response = await axios.get(`http://localhost:3000/weather`, {
         params: {
           lat: lat,
-          lon: lon
+          lon: lon,
+          date: date
         }
       });
-      console.log('Weather Data:', response.data);
       setForecast(response.data);
     } catch (error) {
       console.error('Error fetching weather data:', error);
@@ -41,12 +40,17 @@ function App() {
 
     try {
       let response = await axios.get(url);
-      if (response.data && response.data.length > 0) {
+      if (response.data && Array.isArray(response.data) && response.data.length > 0) {
         setCity(response.data[0].display_name);
         setLatitude(response.data[0].lat);
         setLongitude(response.data[0].lon);
         setErrorMessage('');
-        fetchWeatherData(response.data[0].lat, response.data[0].lon);
+
+        
+        const nextDay = new Date();
+        nextDay.setDate(nextDay.getDate() + 1);
+        const formattedDate = `${nextDay.getFullYear()}-${nextDay.getMonth() + 1}-${nextDay.getDate()}`;
+        fetchWeatherData(response.data[0].lat, response.data[0].lon, formattedDate);
         console.log('Sending request to backend...');
       } else {
         setErrorMessage(`No location found for '${cityName}'. Please try a different location.`);
@@ -68,7 +72,7 @@ function App() {
       {errorMessage && <ErrorComponent message={errorMessage} />}
       <div className="form-container">
         <CityForm city={city} handleChangeCity={changeCity} />
-        <Map latitude={latitude} longitude={longitude} />
+        {latitude && longitude && <Map latitude={latitude} longitude={longitude} city={city} />}
         {forecast && <Weather forecast={forecast} />}
         <Footer />
       </div>
