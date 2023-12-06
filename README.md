@@ -63,6 +63,7 @@ TBD
 - On form submission, the `App` component triggers a request to the Location IQ API using Axios, fetching the location data for the entered city.
 - The retrieved latitude and longitude are passed to the `Map` component, which generates and displays a static map image using the Location IQ API.
 
+### [Request Response Cycle Diagram](cycle.sql)
 
 ## Change Log
 <!-- Use this area to document the iterative changes made to your application as each feature is successfully implemented. Use time stamps. Here's an example:
