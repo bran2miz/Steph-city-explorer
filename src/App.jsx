@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
 import axios from 'axios';
-import Header from "./components/Header.jsx";
-import Footer from "./components/Footer.jsx";
-import CityForm from "./components/CityForm.jsx";
-import Map from './components/Map.jsx';
-import ErrorComponent from './components/Error.jsx';
-import Weather from './components/Weather.jsx';
+import Header from './components/Header';
+import Footer from './components/Footer';
+import CityForm from './components/CityForm';
+import Map from './components/Map';
+import ErrorComponent from './components/Error';
+import Weather from './components/Weather';
 
 const API_KEY = import.meta.env.VITE_API_KEY;
 
@@ -15,17 +15,19 @@ function App() {
   const [longitude, setLongitude] = useState(null);
   const [errorMessage, setErrorMessage] = useState('');
   const [forecast, setForecast] = useState(null);
+  const [showWeather, setShowWeather] = useState(false);
 
-  async function fetchWeatherData(lat, lon, date) {
+  async function fetchWeatherData(lat, lon) {
     try {
-      const response = await axios.get(`http://localhost:3000/weather`, {
+      const response = await axios.get('/weather', {
         params: {
           lat: lat,
           lon: lon,
-          date: date
-        }
+        },
       });
+      
       setForecast(response.data);
+      setShowWeather(true);
     } catch (error) {
       console.error('Error fetching weather data:', error);
     }
@@ -36,21 +38,17 @@ function App() {
       return;
     }
 
-    let url = `https://us1.locationiq.com/v1/search?key=${API_KEY}&q=${cityName}&format=json`;
+    const url = `https://us1.locationiq.com/v1/search.php?key=${API_KEY}&q=${cityName}&format=json`;
 
     try {
-      let response = await axios.get(url);
-      if (response.data && Array.isArray(response.data) && response.data.length > 0) {
+      const response = await axios.get(url);
+      if (response.data && response.data.length > 0) {
         setCity(response.data[0].display_name);
         setLatitude(response.data[0].lat);
         setLongitude(response.data[0].lon);
         setErrorMessage('');
 
-        
-        const nextDay = new Date();
-        nextDay.setDate(nextDay.getDate() + 1);
-        const formattedDate = `${nextDay.getFullYear()}-${nextDay.getMonth() + 1}-${nextDay.getDate()}`;
-        fetchWeatherData(response.data[0].lat, response.data[0].lon, formattedDate);
+        fetchWeatherData(response.data[0].lat, response.data[0].lon);
         console.log('Sending request to backend...');
       } else {
         setErrorMessage(`No location found for '${cityName}'. Please try a different location.`);
@@ -63,7 +61,8 @@ function App() {
 
   function changeCity(newCity) {
     getLocation(newCity);
-    console.log("Changing to", newCity);
+    setShowWeather(false);
+    console.log('Changing to', newCity);
   }
 
   return (
@@ -73,7 +72,7 @@ function App() {
       <div className="form-container">
         <CityForm city={city} handleChangeCity={changeCity} />
         {latitude && longitude && <Map latitude={latitude} longitude={longitude} city={city} />}
-        {forecast && <Weather forecast={forecast} />}
+        {showWeather && forecast && <Weather forecast={forecast} />}
         <Footer />
       </div>
     </div>
